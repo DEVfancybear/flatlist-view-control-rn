@@ -45,7 +45,7 @@ type State = {
   isFooterRefreshing: boolean; // Whether the tail is refreshing
   footerState: RefreshState;
 };
-
+let callOnScrollEnd = false;
 export default class RefreshListView<ItemT> extends Component<
   Props<ItemT>,
   State
@@ -146,6 +146,7 @@ export default class RefreshListView<ItemT> extends Component<
         scrollEventThrottle={16}
         onScroll={this._onScroll.bind(this)}
         ListFooterComponent={this._renderFooter}
+        onEndReached={() => (callOnScrollEnd = true)}
       />
     );
   }
@@ -157,10 +158,11 @@ export default class RefreshListView<ItemT> extends Component<
     let height = event.nativeEvent.layoutMeasurement.height;
     let contentHeight = Math.floor(event.nativeEvent.contentSize.height); //Solve the problem of not triggering Android loading more
 
-    if (this.shouldStartFooterRefreshing()) {
+    if (callOnScrollEnd && this.shouldStartFooterRefreshing()) {
       if (offsetY + height >= contentHeight) {
         console.log('load more');
         this.startFooterRefreshing();
+        callOnScrollEnd = false;
       }
     }
 
