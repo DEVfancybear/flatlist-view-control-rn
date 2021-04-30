@@ -160,7 +160,7 @@ export default class RefreshListView<ItemT> extends Component<
 
     if (callOnScrollEnd && this.shouldStartFooterRefreshing()) {
       if (offsetY + height >= contentHeight) {
-        console.log('load more');
+        // console.log('load more');
         this.startFooterRefreshing();
         callOnScrollEnd = false;
       }

@@ -1,4 +1,4 @@
-# React native flatlist view
+# Wrapper for FlatList React native
 
 ## Installation
 
@@ -9,14 +9,13 @@ npm install flatlist-view-control-rn
 ## Usage
 
 ```js
-import {RefreshListView} from "flatlist-view-control-rn";
-
+import {
+  endRefreshing as EndRefreshing,
+  RefreshListView,
+  RefreshState,
+} from "flatlist-view-control-rn";
 // ...
-
-
 ```
-
-
 
 ## License
 
