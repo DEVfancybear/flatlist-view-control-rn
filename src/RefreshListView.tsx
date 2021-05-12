@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import isEqual from 'react-fast-compare';
+import React, {PureComponent} from 'react';
 import {
   FlatList,
   FlatListProps,
@@ -46,7 +45,7 @@ type State = {
   footerState: RefreshState;
 };
 let callOnScrollEnd = false;
-export default class RefreshListView<ItemT> extends Component<
+export default class RefreshListView<ItemT> extends PureComponent<
   Props<ItemT>,
   State
 > {
@@ -74,9 +73,6 @@ export default class RefreshListView<ItemT> extends Component<
       isFooterRefreshing: false, // Whether the tail is refreshing
       footerState: RefreshState.Idle, // The current state of the tail, the default is Idle, no controls are displayed
     };
-  }
-  shouldComponentUpdate(nextProps: any) {
-    return !isEqual(this.props, nextProps);
   }
 
   public scrollToIndex = (index: number) => {
@@ -160,7 +156,7 @@ export default class RefreshListView<ItemT> extends Component<
 
     if (callOnScrollEnd && this.shouldStartFooterRefreshing()) {
       if (offsetY + height >= contentHeight) {
-        // console.log('load more');
+        // console.log("load more");
         this.startFooterRefreshing();
         callOnScrollEnd = false;
       }

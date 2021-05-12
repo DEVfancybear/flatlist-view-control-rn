@@ -10,7 +10,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
-    "flatlist-view-control-rn": "^1.0.3",
+    "flatlist-view-control-rn": "^1.0.4",
     "immer": "^9.0.2",
     "react": "17.0.1",
     "react-native": "0.64.0",

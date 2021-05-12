@@ -1,5 +1,4 @@
 import React, {memo} from 'react';
-import isEqual from 'react-fast-compare';
 import {
   ActivityIndicator,
   StyleSheet,
@@ -93,7 +92,7 @@ RefreshFooter.defaultProps = {
   footerLoadMoreText: 'Pull up to load more',
 };
 
-export default memo(RefreshFooter, isEqual);
+export default memo(RefreshFooter);
 
 const styles = StyleSheet.create({
   loadingView: {
